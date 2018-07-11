@@ -44,7 +44,7 @@ namespace BlogTemplate
             App.Init(api);
 
             // Configure cache level
-            App.CacheLevel = Piranha.Cache.CacheLevel.Basic;
+            App.CacheLevel = Piranha.Cache.CacheLevel.None;
 
             // Build content types
             var pageTypeBuilder = new Piranha.AttributeBuilder.PageTypeBuilder(api)
