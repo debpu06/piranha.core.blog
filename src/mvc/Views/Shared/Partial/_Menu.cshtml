@@ -1,8 +1,3 @@
-@inject Piranha.IApi Api
-@{
-    var sitemap = Api.Sites.GetSitemap();
-}
-
 @*Not the best solution but meanwhile... class = d-sm-block d-md-none is hiding on md screen solution*@
 <nav class="navbar navbar-toggleable-sm d-sm-block d-md-none float-left">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,9 +6,9 @@
     <a class="navbar-brand" href="#"></a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            @foreach (var item in sitemap)
+            @foreach (var item in WebApp.Site.Sitemap)
             {
-                <a class="nav-item nav-link @(item.Id == ViewBag.CurrentPage ? "active" : "")" href="@item.Permalink">@item.MenuTitle</a>
+                <a class="nav-item nav-link @(item.Id == WebApp.PageId ? "active" : "")" href="@item.Permalink">@item.MenuTitle</a>
             }
         </div>
     </div>
@@ -21,9 +16,9 @@
 @*Not the best solution but meanwhile... class =  d-none d-md-block is hiding on sm screen solution*@
 <nav class="navbar d-none d-md-block float-left">
     <ul class="nav">
-        @foreach (var item in sitemap)
+        @foreach (var item in WebApp.Site.Sitemap)
         {
-            <li class="nav-item @(item.Id == ViewBag.CurrentPage ? "active" : "")">
+            <li class="nav-item @(item.Id == WebApp.PageId ? "active" : "")">
                 <a class="nav-link" href="@item.Permalink">@item.MenuTitle</a>
             </li>
         }

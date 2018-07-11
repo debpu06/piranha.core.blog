@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Piranha.Blog.CSharp</id>
-    <version>5.0.0</version>
+    <version>5.1.0</version>
     <title>Piranha CMS Blog Template</title>
     <authors>Håkan Edling</authors>
     <owners>Håkan Edling</owners>
@@ -34,6 +34,7 @@
     <file src="..\src\mvc\Models\BlogArchive.cs" target="content\Models\BlogArchive.cs" />
     <file src="..\src\mvc\Models\BlogPost.cs" target="content\Models\BlogPost.cs" />
     <file src="..\src\mvc\Models\StandardPage.cs" target="content\Models\StandardPage.cs" />
+    <file src="..\src\mvc\seed\logo.png" target="content\seed\logo.png" />
     <file src="..\src\mvc\seed\pexels-photo-355423.jpeg" target="content\seed\pexels-photo-355423.jpeg" />
     <file src="..\src\mvc\Views\Cms\DisplayTemplates\HtmlBlock.cshtml" target="content\Views\Cms\DisplayTemplates\HtmlBlock.cshtml" />
     <file src="..\src\mvc\Views\Cms\DisplayTemplates\HtmlColumnBlock.cshtml" target="content\Views\Cms\DisplayTemplates\HtmlColumnBlock.cshtml" />
@@ -52,7 +53,6 @@
     <file src="..\src\mvc\wwwroot\assets\css\style.min.css" target="content\wwwroot\assets\css\style.min.css" />
     <file src="..\src\mvc\wwwroot\assets\img\github.png" target="content\wwwroot\assets\img\github.png" />
     <file src="..\src\mvc\wwwroot\assets\img\linkedin.png" target="content\wwwroot\assets\img\linkedin.png" />
-    <file src="..\src\mvc\wwwroot\assets\img\logo.png" target="content\wwwroot\assets\img\logo.png" />
     <file src="..\src\mvc\wwwroot\assets\img\twitter.png" target="content\wwwroot\assets\img\twitter.png" />
     <file src="..\src\mvc\BlogTemplate.csproj" target="content\BlogTemplate.csproj" />
     <file src="..\src\mvc\compilerconfig.json" target="content\compilerconfig.json" />

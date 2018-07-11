@@ -38,9 +38,6 @@ namespace BlogTemplate.Controllers
                 model = _api.Archives.GetByTagId<Models.BlogArchive>(id, tag.Value, page, year, month);
             else model = _api.Archives.GetById<Models.BlogArchive>(id, page, year, month);
             
-            ViewBag.CurrentPage = model.Id;
-            // ViewBag.SiteId = (Guid)HttpContext.Items["Piranha_SiteId"];
-
             return View(model);
         }
 
@@ -52,7 +49,6 @@ namespace BlogTemplate.Controllers
         public IActionResult Page(Guid id) 
         {
             var model = _api.Pages.GetById<Models.StandardPage>(id);
-            ViewBag.CurrentPage = model.Id;
 
             return View(model);
         }
@@ -65,7 +61,6 @@ namespace BlogTemplate.Controllers
         public IActionResult Post(Guid id) 
         {
             var model = _api.Posts.GetById<Models.BlogPost>(id);
-            ViewBag.CurrentPage = model.BlogId;
 
             return View(model);
         }

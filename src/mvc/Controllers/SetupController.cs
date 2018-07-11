@@ -26,10 +26,11 @@ namespace BlogTemplate.Controllers
         public IActionResult Seed() {
             // Get the default site
             var site = api.Sites.GetDefault();
+            site.SiteTypeId = nameof(Models.BlogSite);
+            api.Sites.Save(site);
 
             // Add media assets
             var bannerId = Guid.NewGuid();
-
             using (var stream = System.IO.File.OpenRead("seed/pexels-photo-355423.jpeg")) {
                 api.Media.Save(new Piranha.Models.StreamMediaContent() {
                     Id = bannerId,
@@ -37,8 +38,23 @@ namespace BlogTemplate.Controllers
                     Data = stream
                 });
             }
+            var banner = api.Media.GetById(bannerId);
 
-            var media = api.Media.GetById(bannerId);
+            var logoId = Guid.NewGuid();
+            using (var stream = System.IO.File.OpenRead("seed/logo.png")) {
+                api.Media.Save(new Piranha.Models.StreamMediaContent() {
+                    Id = logoId,
+                    Filename = "logo.png",
+                    Data = stream
+                });
+            }
+
+            // Add the site info
+            var blogSite = Models.BlogSite.Create(api);
+            blogSite.Information.SiteLogo = logoId;
+            blogSite.Information.SiteTitle = "Piranha CMS";
+            blogSite.Information.Tagline = "A lightweight & unobtrusive CMS for Asp.NET Core.";
+            api.Sites.SaveContent(site.Id, blogSite);
 
             // Add the blog archive
             var blogId = Guid.NewGuid();
@@ -129,7 +145,7 @@ namespace BlogTemplate.Controllers
                 Body = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod."
             });
             page.Blocks.Add(new HtmlColumnBlock {
-                Column1 = $"<p><img src=\"{media.PublicUrl.Replace("~", "")}\"></p>",
+                Column1 = $"<p><img src=\"{banner.PublicUrl.Replace("~", "")}\"></p>",
                 Column2 = "<p>Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>"
             });
             page.Published = DateTime.Now;

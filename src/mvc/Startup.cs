@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Piranha;
 using Piranha.AspNetCore.Identity.SQLite;
-using Piranha.ImageSharp;
-using Piranha.Local;
 
 namespace BlogTemplate
 {
@@ -24,6 +18,7 @@ namespace BlogTemplate
             {
                 config.ModelBinderProviders.Insert(0, new Piranha.Manager.Binders.AbstractModelBinderProvider());
             });
+            services.AddPiranhaApplication();
             services.AddPiranhaFileStorage();
             services.AddPiranhaImageSharp();
             services.AddPiranhaEF(options => 
@@ -31,6 +26,7 @@ namespace BlogTemplate
             services.AddPiranhaIdentityWithSeed<IdentitySQLiteDb>(options => 
                 options.UseSqlite("Filename=./piranha.blog.db"));
             services.AddPiranhaManager();
+            services.AddSingleton<ICache, Piranha.Cache.MemCache>();
 
             return services.BuildServiceProvider();
         }
@@ -47,6 +43,9 @@ namespace BlogTemplate
             var api = services.GetService<IApi>();
             App.Init(api);
 
+            // Configure cache level
+            App.CacheLevel = Piranha.Cache.CacheLevel.Basic;
+
             // Build content types
             var pageTypeBuilder = new Piranha.AttributeBuilder.PageTypeBuilder(api)
                 .AddType(typeof(Models.BlogArchive))
@@ -56,6 +55,10 @@ namespace BlogTemplate
             var postTypeBuilder = new Piranha.AttributeBuilder.PostTypeBuilder(api)
                 .AddType(typeof(Models.BlogPost));
             postTypeBuilder.Build()
+                .DeleteOrphans();
+            var siteTypeBuilder = new Piranha.AttributeBuilder.SiteTypeBuilder(api)
+                .AddType(typeof(Models.BlogSite));
+            siteTypeBuilder.Build()
                 .DeleteOrphans();
 
             // Register middleware

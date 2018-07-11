@@ -1,3 +1,6 @@
+@{
+    var site = WebApp.Site.GetContent<BlogTemplate.Models.BlogSite>();
+}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
     <title>@ViewBag.Title</title>
 
     @if (Model is Piranha.Models.IMeta) {
-        @Html.Partial("Partial/_Meta")
+        <partial name="Partial/_Meta.cshtml" />
     }
 
     @RenderSection("head", required: false)
@@ -27,7 +30,7 @@
                             <a href="https://github.com" target="_blank"><img src="/assets/img/github.png"></a>
                             <a href="https://www.linkedin.com" target="_blank"><img src="/assets/img/linkedin.png"></a>
                         </div>
-                        @Html.Partial("Partial/_Menu")
+                        <partial name="Partial/_Menu.cshtml" />
                     </div>
                 </div>
             </div>
@@ -36,8 +39,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
-                        <img src="/assets/img/logo.png">
-                        <h1>Blog Title<small class="d-none d-sm-inline">Blog tagline goes here</small></h1>
+                        <img src="@Url.Content(site.Information.SiteLogo)">
+                        <h1>@site.Information.SiteTitle<small class="d-none d-sm-inline">@site.Information.Tagline</small></h1>
                     </div>
                 </div>
             </div>
@@ -50,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    Copyright &copy; 2018 Blog Title
+                    Copyright &copy; 2018 @site.Information.SiteTitle
                 </div>
             </div>
         </div>
