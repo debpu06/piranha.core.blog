@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Piranha.Blog.CSharp</id>
-    <version>5.1.2</version>
+    <version>5.1.3</version>
     <title>Piranha CMS Blog Template</title>
     <authors>Håkan Edling</authors>
     <owners>Håkan Edling</owners>
@@ -24,38 +24,19 @@
   <files>
     <file src="content\wwwroot\_._" target="content\wwwroot\_._" />
     <file src="..\src\mvc\.template.config\template.json" target="content\.template.config\template.json" />
-    <file src="..\src\mvc\assets\scss\base.scss" target="content\assets\scss\base.scss" />
-    <file src="..\src\mvc\assets\scss\colors.scss" target="content\assets\scss\colors.scss" />
-    <file src="..\src\mvc\assets\scss\style.scss" target="content\assets\scss\style.scss" />
-    <file src="..\src\mvc\assets\scss\type.scss" target="content\assets\scss\type.scss" />
-    <file src="..\src\mvc\Controllers\CmsController.cs" target="content\Controllers\CmsController.cs" />
-    <file src="..\src\mvc\Controllers\SetupController.cs" target="content\Controllers\SetupController.cs" />
-    <file src="..\src\mvc\Models\Regions\Heading.cs" target="content\Models\Regions\Heading.cs" />
-    <file src="..\src\mvc\Models\Regions\SiteInfo.cs" target="content\Models\Regions\SiteInfo.cs" />
-    <file src="..\src\mvc\Models\BlogArchive.cs" target="content\Models\BlogArchive.cs" />
-    <file src="..\src\mvc\Models\BlogPost.cs" target="content\Models\BlogPost.cs" />
-    <file src="..\src\mvc\Models\BlogSite.cs" target="content\Models\BlogSite.cs" />
-    <file src="..\src\mvc\Models\StandardPage.cs" target="content\Models\StandardPage.cs" />
-    <file src="..\src\mvc\seed\logo.png" target="content\seed\logo.png" />
-    <file src="..\src\mvc\seed\pexels-photo-355423.jpeg" target="content\seed\pexels-photo-355423.jpeg" />
-    <file src="..\src\mvc\Views\Cms\DisplayTemplates\HtmlBlock.cshtml" target="content\Views\Cms\DisplayTemplates\HtmlBlock.cshtml" />
-    <file src="..\src\mvc\Views\Cms\DisplayTemplates\HtmlColumnBlock.cshtml" target="content\Views\Cms\DisplayTemplates\HtmlColumnBlock.cshtml" />
-    <file src="..\src\mvc\Views\Cms\DisplayTemplates\ImageBlock.cshtml" target="content\Views\Cms\DisplayTemplates\ImageBlock.cshtml" />
-    <file src="..\src\mvc\Views\Cms\DisplayTemplates\QuoteBlock.cshtml" target="content\Views\Cms\DisplayTemplates\QuoteBlock.cshtml" />
-    <file src="..\src\mvc\Views\Cms\DisplayTemplates\TextBlock.cshtml" target="content\Views\Cms\DisplayTemplates\TextBlock.cshtml" />
-    <file src="..\src\mvc\Views\Cms\Archive.cshtml" target="content\Views\Cms\Archive.cshtml" />
-    <file src="..\src\mvc\Views\Cms\Page.cshtml" target="content\Views\Cms\Page.cshtml" />
-    <file src="..\src\mvc\Views\Cms\Post.cshtml" target="content\Views\Cms\Post.cshtml" />
-    <file src="..\src\mvc\Views\Setup\Index.cshtml" target="content\Views\Setup\Index.cshtml" />
-    <file src="..\src\mvc\Views\Shared\Partial\_Menu.cshtml" target="content\Views\Shared\Partial\_Menu.cshtml" />
-    <file src="..\src\mvc\Views\Shared\Partial\_Meta.cshtml" target="content\Views\Shared\Partial\_Meta.cshtml" />
-    <file src="..\src\mvc\Views\Shared\_Layout.cshtml" target="content\Views\Shared\_Layout.cshtml" />
-    <file src="..\src\mvc\Views\_ViewStart.cshtml" target="content\Views\_ViewStart.cshtml" />
-    <file src="..\src\mvc\wwwroot\assets\css\style.css" target="content\wwwroot\assets\css\style.css" />
-    <file src="..\src\mvc\wwwroot\assets\css\style.min.css" target="content\wwwroot\assets\css\style.min.css" />
-    <file src="..\src\mvc\wwwroot\assets\img\github.png" target="content\wwwroot\assets\img\github.png" />
-    <file src="..\src\mvc\wwwroot\assets\img\linkedin.png" target="content\wwwroot\assets\img\linkedin.png" />
-    <file src="..\src\mvc\wwwroot\assets\img\twitter.png" target="content\wwwroot\assets\img\twitter.png" />
+    <file src="..\src\mvc\assets\scss\*.*" target="content\assets\scss" />
+    <file src="..\src\mvc\Controllers\*.*" target="content\Controllers" />
+    <file src="..\src\mvc\Models\*.*" target="content\Models" />
+    <file src="..\src\mvc\Models\Regions\*.*" target="content\Models\Regions" />
+    <file src="..\src\mvc\seed\*.*" target="content\seed" />
+    <file src="..\src\mvc\Views\*.*" target="content\Views" />
+    <file src="..\src\mvc\Views\Cms\*.*" target="content\Views\Cms" />
+    <file src="..\src\mvc\Views\Cms\DisplayTemplates\*.*" target="content\Views\Cms\DisplayTemplates" />
+    <file src="..\src\mvc\Views\Setup\*.*" target="content\Views\Setup" />
+    <file src="..\src\mvc\Views\Shared\*.*" target="content\Views\Shared" />
+    <file src="..\src\mvc\Views\Shared\Partial\*.*" target="content\Views\Shared\Partial" />
+    <file src="..\src\mvc\wwwroot\assets\css\*.*" target="content\wwwroot\assets\css" />
+    <file src="..\src\mvc\wwwroot\assets\img\*.*" target="content\wwwroot\assets\img" />
     <file src="..\src\mvc\BlogTemplate.csproj" target="content\BlogTemplate.csproj" />
     <file src="..\src\mvc\compilerconfig.json" target="content\compilerconfig.json" />
     <file src="..\src\mvc\compilerconfig.json.defaults" target="content\compilerconfig.json.defaults" />
