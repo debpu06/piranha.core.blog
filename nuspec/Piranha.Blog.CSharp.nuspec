@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Piranha.Blog.CSharp</id>
-    <version>5.1.1</version>
+    <version>5.1.2</version>
     <title>Piranha CMS Blog Template</title>
     <authors>Håkan Edling</authors>
     <owners>Håkan Edling</owners>
@@ -31,6 +31,7 @@
     <file src="..\src\mvc\Controllers\CmsController.cs" target="content\Controllers\CmsController.cs" />
     <file src="..\src\mvc\Controllers\SetupController.cs" target="content\Controllers\SetupController.cs" />
     <file src="..\src\mvc\Models\Regions\Heading.cs" target="content\Models\Regions\Heading.cs" />
+    <file src="..\src\mvc\Models\Regions\SiteInfo.cs" target="content\Models\Regions\SiteInfo.cs" />
     <file src="..\src\mvc\Models\BlogArchive.cs" target="content\Models\BlogArchive.cs" />
     <file src="..\src\mvc\Models\BlogPost.cs" target="content\Models\BlogPost.cs" />
     <file src="..\src\mvc\Models\BlogSite.cs" target="content\Models\BlogSite.cs" />
