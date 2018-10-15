@@ -72,61 +72,21 @@ namespace BlogTemplate.Controllers
             // Add a blog post
             var post = Models.BlogPost.Create(api);
             post.BlogId = blogPage.Id;
-            post.Category = "Uncategorized";
-            post.Tags.Add("Ornare", "Pellentesque", "Fringilla Ridiculus");  
-            post.Title = "Dapibus Cursus Justo";
-            post.MetaKeywords = "Nullam, Mollis, Cras, Sem, Ipsum";
-            post.MetaDescription = "Aenean lacinia bibendum nulla sed consectetur.";
+            post.Category = "Piranha CMS";
+            post.Tags.Add("Welcome", "Fresh Start", "Information");  
+            post.Title = "Welcome to Piranha CMS!";
+            post.MetaKeywords = "Welcome, Piranha CMS, AspNetCore, MVC, .NET Core";
+            post.MetaDescription = "Piranha is the fun, fast and lightweight framework for developing cms-based web applications with ASP.Net Core.";
             post.Heading.PrimaryImage = bannerId;
-            post.Heading.Ingress = "<p>Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.</p>";
+            post.Heading.Ingress = "<p>Piranha CMS is a <strong>lightweight</strong>, <strong>cross-platform</strong> CMS <string>library</string> for <code>NetStandard 2.0</code>, <code>.NET Core</code> & <code>Entity Framework Core</code>. It can be used to add CMS functionality to your existing application or to build a new website from scratch. It has an extensible & pluggable architecture that can support a wide variety of runtime scenarios.</p>";
             post.Blocks.Add(new HtmlBlock {
-                Body = "<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>"
-            });
-            post.Published = DateTime.Now;
-            api.Posts.Save(post);
-            
-            // Add another blog post
-            post = Models.BlogPost.Create(api);
-            post.BlogId = blogPage.Id;
-            post.Category = "Uncategorized";
-            post.Tags.Add("Ornare", "Pellentesque");  
-            post.Title = "Fringilla Aenean Commodo";
-            post.MetaKeywords = "Mattis, Tristique, Parturient, Fringilla";
-            post.MetaDescription = "Aenean lacinia bibendum nulla sed consectetur.";
-            post.Heading.PrimaryImage = bannerId;
-            post.Heading.Ingress = "<p>Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.</p>";
-            post.Blocks.Add(new HtmlBlock {
-                Body = "<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.</p>"
-            });
-            post.Blocks.Add(new QuoteBlock {
-                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+                Body = "<p>Piranha CMS is a <strong>lightweight</strong>, <strong>cross-platform</strong> CMS <string>library</string> for <code>NetStandard 2.0</code>, <code>.NET Core</code> & <code>Entity Framework Core</code>. It can be used to add CMS functionality to your existing application or to build a new website from scratch. It has an extensible & pluggable architecture that can support a wide variety of runtime scenarios.</p><p>Piranha CMS is totally <strong>package based</strong> and available on <code>NuGet</code>. You can read more about the different packages available in the documentation.</p>"
             });
             post.Blocks.Add(new HtmlBlock {
-                Body = "<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Etiam porta sem malesuada magna mollis euismod. Aenean lacinia bibendum nulla sed consectetur.</p>" +
-                    "<ul>" +
-                    "  <li>Fringilla Adipiscing Nibh</li>" +
-                    "  <li>Porta Condimentum</li>" +
-                    "  <li>Ullamcorper Nullam</li>" +
-                    "  <li>Dapibus Ornare</li>" +
-                    "</ul>"
+                Body = "<h2>Getting Started</h2><p>To log into the manager interface and start writing content simply go the URL <code>/manager</code> and login with <code>user</code> / <code>password</code> as your username and password.</p>"
             });
             post.Blocks.Add(new HtmlBlock {
-                Body = "<p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>" +
-                    "<ol>" +
-                    "  <li>Dapibus Egestas Risus</li>" +
-                    "  <li>Sit Nibh</li>" +
-                    "  <li>Justo Mollis</li>" +
-                    "  <li>Vestibulum Pellentesque</li>" +
-                    "</ol>"
-            });
-            post.Blocks.Add(new HtmlBlock {
-                Body =
-                    "<pre><code>" +
-                    "    Sem Ipsum Fermentum {\n" +
-                    "        Sem Condimentum\n" +
-                    "        Ridiculus Quam Ornare\n" +
-                    "    }" +
-                    "</code></pre>"
+                Body = "<h2>Licensing</h2><p>Piranha CMS is released under the <strong>MIT</strong> license. It is a permissive free software license, meaning that it permits reuse within proprietary software provided all copies of the licensed software include a copy of the MIT License terms and the copyright notice.</p>"
             });
             post.Published = DateTime.Now;
             api.Posts.Save(post);
