@@ -1,5 +1,8 @@
 # Piranha.Core Blog Template
 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/PiranhaCMS/piranha.core.blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/PiranhaCMS/piranha.core.blog/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/PiranhaCMS/piranha.core.blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/PiranhaCMS/piranha.core.blog/context:javascript)
+
 | Build server | Platform     | Build status |
 |--------------|--------------|--------------|
 | AppVeyor     | Windows      | [![Build status](https://ci.appveyor.com/api/projects/status/9x5aox0my9khjxni?svg=true)](https://ci.appveyor.com/project/tidyui/piranha-core-blog) |
