@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Piranha;
@@ -12,27 +13,25 @@ namespace BlogTemplate
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(config => 
+            services.AddMvc(config =>
             {
                 config.ModelBinderProviders.Insert(0, new Piranha.Manager.Binders.AbstractModelBinderProvider());
-            });
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddPiranhaApplication();
             services.AddPiranhaFileStorage();
             services.AddPiranhaImageSharp();
-            services.AddPiranhaEF(options => 
+            services.AddPiranhaEF(options =>
                 options.UseSqlite("Filename=./piranha.blog.db"));
-            services.AddPiranhaIdentityWithSeed<IdentitySQLiteDb>(options => 
+            services.AddPiranhaIdentityWithSeed<IdentitySQLiteDb>(options =>
                 options.UseSqlite("Filename=./piranha.blog.db"));
             services.AddPiranhaManager();
-            services.AddPiranhaMemCache();
-
-            return services.BuildServiceProvider();
+            services.AddPiranhaMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services, IApi api)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApi api)
         {
             if (env.IsDevelopment())
             {
@@ -65,7 +64,7 @@ namespace BlogTemplate
             app.UseAuthentication();
             app.UsePiranha();
             app.UsePiranhaManager();
-            app.UseMvc(routes => 
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "areaRoute",
                     template: "{area:exists}/{controller}/{action}/{id?}",

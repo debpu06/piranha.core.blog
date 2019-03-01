@@ -29,18 +29,17 @@ namespace Blog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(config => 
+            services.AddMvc(config =>
             {
                 config.ModelBinderProviders.Insert(0, new Piranha.Manager.Binders.AbstractModelBinderProvider());
-            });
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddPiranhaApplication();
             services.AddPiranhaFileStorage();
             services.AddPiranhaImageSharp();
             services.AddPiranhaEF(options => options.UseSqlite("Filename=./piranha.coreweb.db"));
             services.AddPiranhaIdentityWithSeed<IdentitySQLiteDb>(options => options.UseSqlite("Filename=./piranha.blog.db"));
             services.AddPiranhaManager();
-
-            App.Init();
+            services.AddPiranhaMemoryCache();
          }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +49,13 @@ namespace Blog
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            // Initialize Piranha
+            App.Init();
+
+            // Configure cache level
+            App.CacheLevel = Piranha.Cache.CacheLevel.Basic;
+
             // Build content types
             var pageTypeBuilder = new Piranha.AttributeBuilder.PageTypeBuilder(api)
                 .AddType(typeof(Models.BlogArchive))
@@ -61,7 +66,7 @@ namespace Blog
                 .AddType(typeof(Models.BlogPost));
             postTypeBuilder.Build()
                 .DeleteOrphans();
-            
+
             // Register middleware
             app.UseStaticFiles();
             app.UseCookiePolicy();

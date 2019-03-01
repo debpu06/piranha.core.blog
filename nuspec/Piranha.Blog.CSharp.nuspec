@@ -2,13 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Piranha.Blog.CSharp</id>
-    <version>5.3.1</version>
+    <version>5.4.0</version>
     <title>Piranha CMS Blog Template</title>
     <authors>Håkan Edling</authors>
     <owners>Håkan Edling</owners>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
+    <license type="expression">MIT</license>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>http://github.com/piranhacms/piranha.core</projectUrl>
     <iconUrl>http://piranhacms.org/assets/twitter-shield.png</iconUrl>
@@ -18,7 +19,7 @@
       See the changelog available at:
       https://github.com/piranhacms/piranha.core/wiki/changelog
     </releaseNotes>
-    <copyright>Copyright 2018 (c) Håkan Edling</copyright>
+    <copyright>Copyright 2018-2019 (c) Håkan Edling</copyright>
     <tags>cms mvc aspnetcore netstandard</tags>
   </metadata>
   <files>
