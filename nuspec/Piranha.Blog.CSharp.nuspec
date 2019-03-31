@@ -23,7 +23,7 @@
     <tags>cms mvc aspnetcore netstandard</tags>
   </metadata>
   <files>
-    <file src="content\wwwroot\_._" target="content\wwwroot\_._" />
+    <file src="..\src\mvc\wwwroot\" target="content\wwwroot\" />
     <file src="..\src\mvc\.template.config\template.json" target="content\.template.config\template.json" />
     <file src="..\src\mvc\assets\scss\*.*" target="content\assets\scss" />
     <file src="..\src\mvc\Controllers\*.*" target="content\Controllers" />
