@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Setup CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
     <link rel="stylesheet" href="//piranhacms.org/assets/setup/css/style.css">
 
     <title>Welcome to Piranha CMS</title>
@@ -60,20 +60,20 @@
         <div class="row justify-content-center block">
             <div class="col-md-10 col-sm-12">
                 <p>
-                    You can log into the admin panel at <code>~/manager</code> 
-                    with the default credentials <code>admin / password</code>. 
+                    You can log into the admin panel at <code>~/manager</code>
+                    with the default credentials <code>admin / password</code>.
                 </p>
                 <p>
                     Also, if you want we can seed some data for you so you get a hang
-                    of how to setup these page types. After you're done with the setup 
-                    you can delete the <code>SeedController</code> and the <code>~/seed</code> 
+                    of how to setup these page types. After you're done with the setup
+                    you can delete the <code>SeedController</code> and the <code>~/seed</code>
                     directory in your project.
                 </p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
-                <a href="@Url.Action("Seed")" class="btn btn-secondary">Seed some data</a>
+                <a href="@Url.Action("SeedAsync")" class="btn btn-secondary">Seed some data</a>
                 <a href="~/manager/login" class="btn btn-secondary">Take me to the manager</a>
             </div>
         </div>

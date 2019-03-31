@@ -1,7 +1,9 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Piranha;
 using Piranha.Extend.Blocks;
-using System;
+using BlogTemplate.Models;
 
 namespace BlogTemplate.Controllers
 {
@@ -11,7 +13,7 @@ namespace BlogTemplate.Controllers
     /// </summary>
     public class SetupController : Controller
     {
-        private readonly IApi api; 
+        private readonly IApi api;
 
         public SetupController(IApi api) {
             this.api = api;
@@ -23,26 +25,26 @@ namespace BlogTemplate.Controllers
         }
 
         [Route("/seed")]
-        public IActionResult Seed() {
+        public async Task<IActionResult> SeedAsync() {
             // Get the default site
-            var site = api.Sites.GetDefault();
-            site.SiteTypeId = nameof(Models.BlogSite);
-            api.Sites.Save(site);
+            var site = await api.Sites.GetDefaultAsync();
+            site.SiteTypeId = nameof(BlogSite);
+            await api.Sites.SaveAsync(site);
 
             // Add media assets
             var bannerId = Guid.NewGuid();
             using (var stream = System.IO.File.OpenRead("seed/pexels-photo-355423.jpeg")) {
-                api.Media.Save(new Piranha.Models.StreamMediaContent() {
+                await api.Media.SaveAsync(new Piranha.Models.StreamMediaContent() {
                     Id = bannerId,
                     Filename = "pexels-photo-355423.jpeg",
                     Data = stream
                 });
             }
-            var banner = api.Media.GetById(bannerId);
+            var banner = await api.Media.GetByIdAsync(bannerId);
 
             var logoId = Guid.NewGuid();
             using (var stream = System.IO.File.OpenRead("seed/logo.png")) {
-                api.Media.Save(new Piranha.Models.StreamMediaContent() {
+                await api.Media.SaveAsync(new Piranha.Models.StreamMediaContent() {
                     Id = logoId,
                     Filename = "logo.png",
                     Data = stream
@@ -50,15 +52,15 @@ namespace BlogTemplate.Controllers
             }
 
             // Add the site info
-            var blogSite = Models.BlogSite.Create(api);
+            var blogSite = BlogSite.Create(api);
             blogSite.Information.SiteLogo = logoId;
             blogSite.Information.SiteTitle = "Piranha CMS";
             blogSite.Information.Tagline = "A lightweight & unobtrusive CMS for Asp.NET Core.";
-            api.Sites.SaveContent(site.Id, blogSite);
+            await api.Sites.SaveContentAsync(site.Id, blogSite);
 
             // Add the blog archive
             var blogId = Guid.NewGuid();
-            var blogPage = Models.BlogArchive.Create(api);
+            var blogPage = BlogArchive.Create(api);
             blogPage.Id = blogId;
             blogPage.SiteId = site.Id;
             blogPage.Title = "Blog Archive";
@@ -66,14 +68,13 @@ namespace BlogTemplate.Controllers
             blogPage.MetaDescription = "Morbi leo risus, porta ac consectetur ac, vestibulum at eros.";
             blogPage.NavigationTitle = "Blog";
             blogPage.Published = DateTime.Now;
-
-            api.Pages.Save(blogPage);
+            await api.Pages.SaveAsync(blogPage);
 
             // Add a blog post
-            var post = Models.BlogPost.Create(api);
+            var post = BlogPost.Create(api);
             post.BlogId = blogPage.Id;
             post.Category = "Piranha CMS";
-            post.Tags.Add("Welcome", "Fresh Start", "Information");  
+            post.Tags.Add("Welcome", "Fresh Start", "Information");
             post.Title = "Welcome to Piranha CMS!";
             post.MetaKeywords = "Welcome, Piranha CMS, AspNetCore, MVC, .NET Core";
             post.MetaDescription = "Piranha is the fun, fast and lightweight framework for developing cms-based web applications with ASP.Net Core.";
@@ -89,10 +90,10 @@ namespace BlogTemplate.Controllers
                 Body = "<h2>Licensing</h2><p>Piranha CMS is released under the <strong>MIT</strong> license. It is a permissive free software license, meaning that it permits reuse within proprietary software provided all copies of the licensed software include a copy of the MIT License terms and the copyright notice.</p>"
             });
             post.Published = DateTime.Now;
-            api.Posts.Save(post);
+            await api.Posts.SaveAsync(post);
 
             // Add about page
-            var page = Models.StandardPage.Create(api);
+            var page = StandardPage.Create(api);
             page.SiteId = site.Id;
             page.SortOrder = 1;
             page.Title = "About Me";
@@ -109,7 +110,7 @@ namespace BlogTemplate.Controllers
                 Column2 = "<p>Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>"
             });
             page.Published = DateTime.Now;
-            api.Pages.Save(page);
+            await api.Pages.SaveAsync(page);
 
             return Redirect("~/");
         }
